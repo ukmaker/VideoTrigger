@@ -11,6 +11,8 @@ So, in order to view the signals properly, I needed an external trigger signal. 
   - which frame to trigger off
 These are selectable by pushing and turning a rotary encoder, and the setting is display on a small OLED display.
 
+The output from the LM1881 is used to clock a pair of JK flip-flops - one for the positive and one for the negative edge of the sync signal - and the negative-edge clock is inverted using a transistor. The appropriate flip-flop is enabled by the Atmega328 for the duration of the chosen frame. The outputs are ORed together using diode logic and a resistor.
+
 Here is the circuit built on a bit of protoboard. It is powered from the scope's USB port. Input signal is on the left, trigger output is on the right.
 [The Video Trigger](./images/VideoTrigger.JPG)
 
