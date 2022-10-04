@@ -14,8 +14,8 @@
 // Actually 262.5
 #define NTSC_LINES 263
 #define NTSC_VISIBLE_LINES 238
-#define ARM 6
-#define ARMN 7
+#define ARM 7
+#define ARMN 6
 #define ENCA 11
 #define ENCB 12
 #define ENCC 10
