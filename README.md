@@ -8,10 +8,10 @@ Because I had a semi-rational excuse for wanting to make my chip drive a small T
 
 So, in order to view the signals properly, I needed an external trigger signal. Hence this project. It uses the well known LM1881 sync separator IC to derive horizontal and vertical sync from the chip's "Y" output. These in turn feed an Atemga328P - programmed using the Arduino framework - which allows user selection of 
   - which edge of hsync to trigger off
-  - which frame to trigger off
+  - which line to trigger off
 These are selectable by pushing and turning a rotary encoder, and the setting is display on a small OLED display.
 
-The output from the LM1881 is used to clock a pair of JK flip-flops - one for the positive and one for the negative edge of the sync signal - and the negative-edge clock is inverted using a transistor. The appropriate flip-flop is enabled by the Atmega328 for the duration of the chosen frame. The outputs are ORed together using diode logic and a resistor.
+The output from the LM1881 is used to clock a pair of JK flip-flops - one for the positive and one for the negative edge of the sync signal - and the negative-edge clock is inverted using a transistor. The appropriate flip-flop is enabled by the Atmega328 for the duration of the chosen line. The outputs are ORed together using diode logic and a resistor.
 
 Here is the circuit built on a bit of protoboard. It is powered from the scope's USB port. Input signal is on the left, trigger output is on the right.
 [The Video Trigger](./images/VideoTrigger.JPG)
@@ -25,4 +25,4 @@ And in this image you can see the slow rising edge of the trigger signal
 # Is It Any Good?
 Well, it's good enough for me :-)
 
-The input has no buffering, so the impedance is a bit low and interferes with the input signal. I'll add a buffer of some sort when I get some time. This migh be a bit tricky due to the output levels of the VDP.
+The input buffer is tailored to the output of the VDP. If the signal you use as the input does not have a DC offset of 2V, you'll need to bias the transistor up and add an input decoupling capacitor.
